@@ -39,12 +39,14 @@
 
   document.querySelectorAll('input[data-search]').forEach(function (input) {
     var items = document.querySelectorAll(input.getAttribute('data-search'));
+    var asked = new URLSearchParams(location.search).get('q');  // from the home page's search
     input.addEventListener('input', function () {
       var words = input.value.trim().toLowerCase();
       items.forEach(function (item) {
         item.hidden = words !== '' && (item.getAttribute('data-name') || '').indexOf(words) < 0;
       });
     });
+    if (asked) { input.value = asked; input.dispatchEvent(new Event('input')); }
   });
 
   document.querySelectorAll('[data-filter]').forEach(function (bar) {
