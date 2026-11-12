@@ -49,12 +49,13 @@
   <p>propovcs2.com is the website of Pro POV CS2, a project that publishes professional Counter-Strike 2 players' POVs and settings. For anything about your data, message us on any of our networks (links in the footer).</p>
 
   <h2>What we do not do</h2>
-  <p>There are no user accounts, we ask for no personal data and the site sets no cookies of its own. We do not sell or share data with anyone.</p>
+  <p>There are no user accounts, we ask for no personal data and the site sets no cookies of its own (except Google Analytics, if you accept it). We do not sell or share data with anyone.</p>
 
   <h2>Third-party services</h2>
   <ul>
     <li><b>Hosting (GitHub Pages) and DNS (Cloudflare):</b> like any web server, they technically log each visit's IP address and browser to serve the page and protect it from abuse.</li>
     <li><b>Statistics (Cloudflare Web Analytics):</b> visits are counted in aggregate, without cookies and without following anyone across sites.</li>
+    <li><b>Google Analytics (only if you accept):</b> if you press "Accept" on the cookie banner, Google Analytics sets cookies to measure which pages are visited and where visitors come from, with the IP anonymised. If you decline, it is not loaded. You can change your choice with the "Cookies" link in the footer.</li>
     <li><b>Kick stream:</b> the home page embeds Kick's player, which loads from Kick's servers and may use its own cookies under its privacy policy.</li>
     <li><b>YouTube thumbnails:</b> the videos' pictures load from YouTube's (Google's) servers.</li>
     <li><b>Amazon links:</b> the gear links are affiliate links. If you click one, Amazon may use cookies to credit us a commission on your purchase, at no cost to you.</li>
@@ -81,8 +82,12 @@
     </div>
   </section>
   <p class="small">Pro POV CS2: the POVs and settings of the best CS2 players. Gear links are affiliate links: we may earn a commission, at no cost to you.</p>
-  <p class="small">Settings: prosettings.net and the player&#39;s demos · Profile: HLTV.org · <a href="/privacy/">Privacy</a></p>
+  <p class="small">Settings: prosettings.net and the player&#39;s demos · Profile: HLTV.org · <a href="/privacy/">Privacy</a> · <a href="#" data-consent-reset>Cookies</a></p>
 </footer>
+<div id="consent" hidden data-ga="G-2667EZYBGK" role="dialog" aria-label="Cookies">
+  <p>We use Google Analytics cookies to see which pages are useful. Do you accept them? <a href="/privacy/">Privacy</a></p>
+  <div><button type="button" data-consent="no">Decline</button><button type="button" data-consent="yes">Accept</button></div>
+</div>
 <div id="toast" role="status" aria-live="polite" data-copied="Copied"></div>
 <script src="/assets/site.js" defer></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "TU_TOKEN"}'></script></body>

@@ -49,12 +49,13 @@
   <p>propovcs2.com es la web de Pro POV CS2, un proyecto que publica POVs de jugadores profesionales de Counter-Strike 2 y sus settings. Para cualquier consulta sobre tus datos, escríbenos por mensaje privado en cualquiera de nuestras redes (enlaces al pie de la página).</p>
 
   <h2>Lo que no hacemos</h2>
-  <p>No tenemos cuentas de usuario, no pedimos datos personales y la web no instala cookies propias. No vendemos ni cedemos datos a nadie.</p>
+  <p>No tenemos cuentas de usuario, no pedimos datos personales y la web no instala cookies propias (salvo Google Analytics si lo aceptas). No vendemos ni cedemos datos a nadie.</p>
 
   <h2>Servicios de terceros</h2>
   <ul>
     <li><b>Alojamiento (GitHub Pages) y DNS (Cloudflare):</b> como cualquier servidor web, registran técnicamente la dirección IP y el navegador de cada visita para servir la página y protegerla de abusos.</li>
     <li><b>Estadísticas (Cloudflare Web Analytics):</b> cuentan visitas de forma agregada, sin cookies y sin seguir a nadie entre webs.</li>
+    <li><b>Google Analytics (solo si lo aceptas):</b> si pulsas «Aceptar» en el aviso de cookies, Google Analytics guarda cookies para medir qué páginas se visitan y de dónde llega la gente, con la IP anonimizada. Si lo rechazas no se carga. Puedes cambiar tu elección en el enlace «Cookies» del pie.</li>
     <li><b>Directo de Kick:</b> la portada incrusta el reproductor de Kick, que carga desde sus servidores y puede usar sus propias cookies según su política de privacidad.</li>
     <li><b>Miniaturas de YouTube:</b> las imágenes de los vídeos se cargan desde los servidores de YouTube (Google).</li>
     <li><b>Enlaces de Amazon:</b> los enlaces de periféricos son enlaces de afiliado. Si haces clic, Amazon puede usar cookies para atribuirnos una comisión por tu compra, sin coste para ti.</li>
@@ -81,8 +82,12 @@
     </div>
   </section>
   <p class="small">Pro POV CS2: los POVs y settings de los mejores jugadores de CS2. Los enlaces de periféricos son de afiliado: podemos ganar una comisión, sin coste para ti.</p>
-  <p class="small">Settings: prosettings.net y las demos del jugador · Perfil: HLTV.org · <a href="/es/privacy/">Privacidad</a></p>
+  <p class="small">Settings: prosettings.net y las demos del jugador · Perfil: HLTV.org · <a href="/es/privacy/">Privacidad</a> · <a href="#" data-consent-reset>Cookies</a></p>
 </footer>
+<div id="consent" hidden data-ga="G-2667EZYBGK" role="dialog" aria-label="Cookies">
+  <p>Usamos cookies de Google Analytics para saber qué páginas son útiles. ¿Las aceptas? <a href="/es/privacy/">Privacidad</a></p>
+  <div><button type="button" data-consent="no">Rechazar</button><button type="button" data-consent="yes">Aceptar</button></div>
+</div>
 <div id="toast" role="status" aria-live="polite" data-copied="Copiado"></div>
 <script src="/assets/site.js" defer></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "TU_TOKEN"}'></script></body>

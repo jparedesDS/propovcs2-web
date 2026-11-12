@@ -216,3 +216,11 @@ details.cmds pre { max-height: 260px; }
 .legal h2 { font-size: 20px; margin-top: 22px; }
 .legal li { margin-bottom: 8px; color: var(--stone); }
 .legal li b { color: var(--bone); }
+
+/* cookie banner (Google Analytics only on "Accept") */
+#consent { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 20; max-width: 640px; margin: 0 auto; background: var(--graphite2); border: 1px solid var(--graphite3); border-radius: var(--r); padding: 14px 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+#consent[hidden] { display: none; }
+#consent p { margin: 0; flex: 1; min-width: 220px; font-size: 14px; color: var(--stone); }
+#consent div { display: flex; gap: 8px; }
+#consent button { cursor: pointer; font: 700 13px Mono, monospace; border-radius: 6px; padding: 8px 14px; border: 1px solid var(--graphite3); background: transparent; color: var(--bone); }
+#consent button[data-consent="yes"] { background: var(--yellow); color: var(--graphite); border-color: var(--yellow); }

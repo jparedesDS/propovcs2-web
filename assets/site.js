@@ -37,6 +37,40 @@
     });
   });
 
+  // Google Analytics only once the visitor accepts (its cookies need consent in the EU).
+  var consent = document.getElementById('consent');
+  function remembered() { try { return localStorage.getItem('consent'); } catch (e) { return null; } }
+  function remember(value) { try { localStorage.setItem('consent', value); } catch (e) {} }
+  function analytics(id) {
+    if (window.gtagLoaded) return;
+    window.gtagLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', id, { anonymize_ip: true });
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+    document.head.appendChild(script);
+  }
+  if (consent) {
+    var id = consent.getAttribute('data-ga');
+    var said = remembered();
+    if (said === 'yes') analytics(id);
+    else if (said !== 'no') consent.hidden = false;
+    consent.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-consent]');
+      if (!button) return;
+      var yes = button.getAttribute('data-consent') === 'yes';
+      remember(yes ? 'yes' : 'no');
+      consent.hidden = true;
+      if (yes) analytics(id);
+    });
+    document.querySelectorAll('[data-consent-reset]').forEach(function (link) {
+      link.addEventListener('click', function (event) { event.preventDefault(); consent.hidden = false; });
+    });
+  }
+
   document.querySelectorAll('input[data-search]').forEach(function (input) {
     var items = document.querySelectorAll(input.getAttribute('data-search'));
     var asked = new URLSearchParams(location.search).get('q');  // from the home page's search
