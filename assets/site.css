@@ -205,3 +205,5 @@ details.cmds pre { max-height: 260px; }
   .follow, .shares { grid-template-columns: 1fr; }
 }
 .hero.small input.search { margin-left: 0; }
+.hero .follow { text-align: left; margin: 18px 0 4px; }
+.live-dot { z-index: 1; pointer-events: none; }
