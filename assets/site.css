@@ -1,8 +1,8 @@
 /* propovcs2.com: the brand of 01/11/2026 (branding/source/common.css). */
-@font-face { font-family: Shoulders; font-weight: 700; font-display: swap; src: url(fonts/BigShouldersDisplay-Bold.ttf); }
-@font-face { font-family: Shoulders; font-weight: 900; font-display: swap; src: url(fonts/BigShouldersDisplay-Black.ttf); }
-@font-face { font-family: Mono; font-weight: 500; font-display: swap; src: url(fonts/JetBrainsMono-Medium.ttf); }
-@font-face { font-family: Mono; font-weight: 700; font-display: swap; src: url(fonts/JetBrainsMono-Bold.ttf); }
+@font-face { font-family: Shoulders; font-weight: 700; font-display: swap; src: url(fonts/BigShouldersDisplay-Bold.woff2) format("woff2"); }
+@font-face { font-family: Shoulders; font-weight: 900; font-display: swap; src: url(fonts/BigShouldersDisplay-Black.woff2) format("woff2"); }
+@font-face { font-family: Mono; font-weight: 500; font-display: swap; src: url(fonts/JetBrainsMono-Medium.woff2) format("woff2"); }
+@font-face { font-family: Mono; font-weight: 700; font-display: swap; src: url(fonts/JetBrainsMono-Bold.woff2) format("woff2"); }
 :root {
   --graphite: #121316; --graphite2: #1B1D21; --graphite3: #2A2C31;
   --bone: #F3F1EC; --stone: #A19E96;
@@ -207,3 +207,12 @@ details.cmds pre { max-height: 260px; }
 .hero.small input.search { margin-left: 0; }
 .hero .follow { text-align: left; margin: 18px 0 4px; }
 .live-dot { z-index: 1; pointer-events: none; }
+
+
+/* footer: the follow block on every page */
+.foot .follow { margin: 0 0 14px; }
+.foot .follow:not(:has(.live)) { grid-template-columns: 1fr; }
+.legal { max-width: 760px; }
+.legal h2 { font-size: 20px; margin-top: 22px; }
+.legal li { margin-bottom: 8px; color: var(--stone); }
+.legal li b { color: var(--bone); }
