@@ -25,6 +25,18 @@
     if (button) copy(button.getAttribute('data-copy'));
   });
 
+  // The 24/7 stream: Twitch's player only once asked for (it is heavy).
+  document.querySelectorAll('[data-embed]').forEach(function (box) {
+    box.addEventListener('click', function () {
+      if (box.querySelector('iframe')) return;
+      var frame = document.createElement('iframe');
+      frame.src = box.getAttribute('data-embed');
+      frame.allowFullscreen = true;
+      frame.setAttribute('allow', 'autoplay; fullscreen');
+      box.appendChild(frame);
+    });
+  });
+
   document.querySelectorAll('input[data-search]').forEach(function (input) {
     var items = document.querySelectorAll(input.getAttribute('data-search'));
     input.addEventListener('input', function () {
