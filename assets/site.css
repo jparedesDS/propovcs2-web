@@ -224,3 +224,22 @@ details.cmds pre { max-height: 260px; }
 #consent div { display: flex; gap: 8px; }
 #consent button { cursor: pointer; font: 700 13px Mono, monospace; border-radius: 6px; padding: 8px 14px; border: 1px solid var(--graphite3); background: transparent; color: var(--bone); }
 #consent button[data-consent="yes"] { background: var(--yellow); color: var(--graphite); border-color: var(--yellow); }
+/* Teams, settings changes, the crosshair of the day (13/11/2026) */
+.teams { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.team { text-decoration: none; display: flex; flex-direction: column; gap: 6px; margin: 0; }
+.team small { color: var(--stone); }
+.team .faces { display: flex; gap: 4px; flex-wrap: wrap; }
+.team .face { width: 34px; height: 40px; object-fit: cover; object-position: 50% 15%; border-radius: 6px; font-size: 12px; display: flex; align-items: center; justify-content: center; background: var(--graphite3); }
+.xcards.wide { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+.xcard .kv { width: 100%; }
+.chg td { white-space: nowrap; }
+.chg td:nth-child(2) { white-space: normal; }
+.chg s { color: var(--stone); }
+.chg .dim { color: var(--stone); font: 12px Mono, monospace; text-align: left; }
+.daily .xh-code p { margin: 0 0 8px; }
+.daily .xh-code a { display: inline-block; margin-top: 8px; }
+@media (max-width: 600px) { .chg td { white-space: normal; } }
+.xcards.wide .thumb { width: 120px; height: 140px; }
+.xcard .kv td { font-size: 13px; padding: 4px 2px; text-align: left; }
+.xcard .kv td:last-child { text-align: right; font-size: 13px; }
+.xcard > a { display: flex; flex-direction: column; align-items: center; gap: 6px; }
