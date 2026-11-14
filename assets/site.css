@@ -51,6 +51,7 @@ code, pre, .mono, .stats b, .minis b, td { font-family: Mono, ui-monospace, mono
 /* profile: one card, photo on the left, figures as tiles */
 .profile { display: grid; grid-template-columns: 170px 1fr; gap: 20px; align-items: center; margin-top: 18px; }
 .photo { width: 170px; height: 200px; object-fit: cover; object-position: 50% 0; border-radius: var(--r); background: var(--graphite3); }
+.teamlogo { object-fit: contain; object-position: 50% 50%; padding: 18%; box-sizing: border-box; }
 .noface { display: flex; align-items: center; justify-content: center; font: 900 48px Shoulders, sans-serif; color: var(--stone); }
 .who { min-width: 0; }
 .who h1 { margin: 2px 0 0; }
@@ -243,3 +244,29 @@ details.cmds pre { max-height: 260px; }
 .xcard .kv td { font-size: 13px; padding: 4px 2px; text-align: left; }
 .xcard .kv td:last-child { text-align: right; font-size: 13px; }
 .xcard > a { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+
+/* compare two pros and the gear pros use most (14/11/2026) */
+.cta.ghost { background: transparent; color: var(--stone); border: 1px solid var(--graphite3); margin: 0 8px 8px 0; }
+.cmp-pick { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
+.cmp-pick select { flex: 1 1 200px; min-width: 0; background: var(--graphite3); color: var(--stone); border: 1px solid var(--graphite3); border-radius: 8px; padding: 10px; font: 600 15px system-ui, sans-serif; }
+.cmp-vs { font: 900 22px Shoulders, sans-serif; color: var(--yellow); }
+.cmp-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.cmp-table th:first-child { width: 28%; }
+.cmp-table td, .cmp-table th { overflow-wrap: anywhere; }
+.cmp-table td.cmp-label { overflow-wrap: normal; hyphens: auto; }
+.cmp-table button.copy { white-space: normal; word-break: break-all; max-width: 100%; }
+.cmp-table td, .cmp-table th { padding: 8px 10px; border-bottom: 1px solid var(--graphite3); text-align: center; vertical-align: middle; }
+.cmp-table .cmp-label { text-align: left; color: var(--stone); opacity: .8; }
+.cmp-table tr.diff td:not(.cmp-label) { color: var(--yellow); font-weight: 700; }
+.cmp-who { vertical-align: bottom; }
+.cmp-ph { width: 96px; height: 112px; object-fit: cover; object-position: 50% 0; border-radius: var(--r); background: var(--graphite3); display: block; margin: 0 auto 6px; font-size: 32px; }
+.cmp-name { font: 900 20px Shoulders, sans-serif; text-decoration: none; display: block; }
+.gearrank { list-style: none; counter-reset: rank; padding: 0; margin: 0; }
+.gearrank li { counter-increment: rank; padding: 10px 0 10px 38px; border-bottom: 1px solid var(--graphite3); position: relative; }
+.gearrank li::before { content: counter(rank); position: absolute; left: 0; top: 8px; font: 900 22px Shoulders, sans-serif; color: var(--yellow); }
+.gr-top { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.gr-name { font-weight: 700; text-decoration: none; }
+.gr-bar { height: 6px; background: var(--graphite3); border-radius: 3px; margin: 6px 0; overflow: hidden; }
+.gr-bar i { display: block; height: 100%; background: var(--yellow); }
+.gr-who { font-size: 13px; opacity: .85; }
+@media (max-width: 560px) { .cmp-ph { width: 64px; height: 76px; } .cmp-name { font-size: 16px; } .cmp-table td, .cmp-table th { padding: 6px 4px; font-size: 13px; } .cmp-table td.cmp-label { font-size: 11px; } .cmp-table th:first-child { width: 31%; } }

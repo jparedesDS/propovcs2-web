@@ -115,8 +115,97 @@
       });
     });
   });
+
+  // Compare two pros (14/11/2026): the page carries every pro as JSON.
+  var cmp = document.getElementById('compare');
+  var cmpData = document.getElementById('compare-data');
+  if (cmp && cmpData) {
+    var pros = JSON.parse(cmpData.textContent);
+    var bySlug = {};
+    pros.forEach(function (p) { bySlug[p.s] = p; });
+    var pickA = document.getElementById('cmp-a'), pickB = document.getElementById('cmp-b');
+    var out = document.getElementById('cmp-out');
+    var prefix = cmp.getAttribute('data-prefix') || '';
+    function el(tag, cls, text) {
+      var node = document.createElement(tag);
+      if (cls) node.className = cls;
+      if (text !== undefined) node.textContent = text;
+      return node;
+    }
+    [pickA, pickB].forEach(function (pick) {
+      pros.forEach(function (p) {
+        var option = el('option', '', p.t ? p.n + ' · ' + p.t : p.n);
+        option.value = p.s;
+        pick.appendChild(option);
+      });
+    });
+    var params = new URLSearchParams(location.search);
+    var a = bySlug[params.get('a')] ? params.get('a') : pros[0] && pros[0].s;
+    var b = bySlug[params.get('b')] ? params.get('b') : (pros.filter(function (p) { return p.s !== a; })[0] || {}).s;
+    pickA.value = a; pickB.value = b;
+    function head(p) {
+      var cell = el('th', 'cmp-who');
+      if (p.ph) {
+        var img = el('img', 'cmp-ph'); img.src = p.ph; img.alt = p.n; img.loading = 'lazy';
+        cell.appendChild(img);
+      } else { cell.appendChild(el('div', 'cmp-ph noface', p.n.slice(0, 2).toUpperCase())); }
+      var link = el('a', 'cmp-name', p.n); link.href = prefix + '/players/' + p.s + '/';
+      cell.appendChild(link);
+      if (p.t) cell.appendChild(el('div', 'dim', p.t));
+      return cell;
+    }
+    function table(rowsA, rowsB, links) {
+      var labels = [], seen = {};
+      rowsA.concat(rowsB).forEach(function (r) { if (!seen[r[0]]) { seen[r[0]] = 1; labels.push(r[0]); } });
+      var find = function (rows, label) { return rows.filter(function (r) { return r[0] === label; })[0]; };
+      var body = el('tbody');
+      labels.forEach(function (label) {
+        var ra = find(rowsA, label), rb = find(rowsB, label);
+        var row = el('tr', ra && rb && ra[1] !== rb[1] ? 'diff' : '');
+        row.appendChild(el('td', 'cmp-label', label));
+        [ra, rb].forEach(function (r) {
+          var cell = el('td');
+          if (r && links && r[2]) {
+            var link = el('a', '', r[1]); link.href = r[2]; link.rel = 'sponsored noopener'; link.target = '_blank';
+            cell.appendChild(link);
+          } else { cell.textContent = r ? r[1] : '–'; }
+          row.appendChild(cell);
+        });
+        body.appendChild(row);
+      });
+      return body;
+    }
+    function render() {
+      var pa = bySlug[pickA.value], pb = bySlug[pickB.value];
+      out.textContent = '';
+      if (!pa || !pb) return;
+      var grid = el('table', 'cmp-table');
+      var top = el('thead'), tr = el('tr');
+      tr.appendChild(el('th'));
+      tr.appendChild(head(pa)); tr.appendChild(head(pb));
+      top.appendChild(tr); grid.appendChild(top);
+      var codes = el('tr', pa.x && pb.x && pa.x !== pb.x ? 'diff' : '');
+      codes.appendChild(el('td', 'cmp-label', cmp.getAttribute('data-code') || 'Crosshair'));
+      [pa, pb].forEach(function (p) {
+        var cell = el('td');
+        if (p.x) {
+          var button = el('button', 'copy', '📋 ' + p.x); button.type = 'button';
+          button.setAttribute('data-copy', p.x);
+          cell.appendChild(button);
+        } else { cell.textContent = '–'; }
+        codes.appendChild(cell);
+      });
+      var body = table(pa.rows, pb.rows, false);
+      body.insertBefore(codes, body.firstChild);
+      grid.appendChild(body);
+      grid.appendChild(table(pa.g, pb.g, true));
+      var wrap = el('div', 'tablewrap'); wrap.appendChild(grid);
+      out.appendChild(wrap);
+      var query = '?a=' + encodeURIComponent(pa.s) + '&b=' + encodeURIComponent(pb.s);
+      if (history.replaceState) history.replaceState(null, '', location.pathname + query);
+    }
+    pickA.addEventListener('change', render);
+    pickB.addEventListener('change', render);
+    render();
+  }
 })();
-
-/* Pulse analytics (cookieless) */
-(function(){var s=document.createElement('script');s.defer=true;s.src='https://pulse.subtitleme.workers.dev/t.js';s.setAttribute('data-site','pk_a735289d8ff4605fd547');document.head.appendChild(s);})();
-
