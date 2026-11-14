@@ -116,3 +116,7 @@
     });
   });
 })();
+
+/* Pulse analytics (cookieless) */
+(function(){var s=document.createElement('script');s.defer=true;s.src='https://pulse.subtitleme.workers.dev/t.js';s.setAttribute('data-site','pk_a735289d8ff4605fd547');document.head.appendChild(s);})();
+
