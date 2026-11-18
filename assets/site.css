@@ -270,3 +270,14 @@ details.cmds pre { max-height: 260px; }
 .gr-bar i { display: block; height: 100%; background: var(--yellow); }
 .gr-who { font-size: 13px; opacity: .85; }
 @media (max-width: 560px) { .cmp-ph { width: 64px; height: 76px; } .cmp-name { font-size: 16px; } .cmp-table td, .cmp-table th { padding: 6px 4px; font-size: 13px; } .cmp-table td.cmp-label { font-size: 11px; } .cmp-table th:first-child { width: 31%; } }
+
+/* Isso's comments box, in the site's colours (its own stylesheet is light) */
+.comments #isso-thread { color: var(--bone); }
+.comments #isso-thread input, .comments #isso-thread textarea, .comments #isso-thread .isso-textarea {
+  background: var(--graphite2); color: var(--bone); border: 1px solid var(--graphite3); border-radius: 6px; }
+.comments #isso-thread .isso-comment > div.isso-text-wrapper, .comments #isso-thread .isso-postbox > .isso-form-wrapper > .isso-textarea-wrapper > .isso-textarea {
+  background: var(--graphite2); }
+.comments #isso-thread .isso-comment-header a, .comments #isso-thread .isso-author { color: var(--yellow); }
+.comments #isso-thread .isso-permalink, .comments #isso-thread .isso-note, .comments #isso-thread .isso-comment-footer a { color: var(--stone); }
+.comments #isso-thread input[type=submit] { background: var(--yellow); color: var(--graphite); border: 0; font-weight: 700; cursor: pointer; }
+.comments #isso-thread .isso-comment { border-top: 1px solid var(--graphite3); }
